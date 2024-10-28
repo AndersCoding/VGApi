@@ -30,7 +30,7 @@ export default function Carousel({ movies }: CarouselProps) {
       <div className="flex items-center space-x-4">
         <button
           onClick={handlePrevious}
-          className="text-3xl text-[#F773DE] hover:text-gray-800 focus:outline-none"
+          className="text-3xl text-[#F773DE] hover:text-[#B48AAC] focus:outline-none"
         >
           {"<"}
         </button>
@@ -52,7 +52,7 @@ export default function Carousel({ movies }: CarouselProps) {
 
         <button
           onClick={handleNext}
-          className="text-3xl text-[#F773DE] hover:text-gray-800 focus:outline-none"
+          className="text-3xl text-[#F773DE] hover:text-[#B48AAC] focus:outline-none"
         >
           {">"}
         </button>
@@ -62,7 +62,7 @@ export default function Carousel({ movies }: CarouselProps) {
           <div
             key={index}
             className={`h-2 rounded-full ${
-              index === currentIndex ? " w-6 bg-[#F773DE]" : " w-2 bg-[#F773DE]"
+              index === currentIndex ? " w-6 bg-[#F773DE]" : " w-2 bg-[#B48AAC]"
             }`}
           />
         ))}
