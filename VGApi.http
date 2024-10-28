@@ -1,0 +1,6 @@
+@VGApi_HostAddress = http://localhost:5277
+
+GET {{VGApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
