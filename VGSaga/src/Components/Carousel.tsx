@@ -24,9 +24,9 @@ export default function Carousel({ movies }: CarouselProps) {
   const currentMovie = movies[currentIndex];
 
   return (
-    <div className="max-w-md mx-auto p-4 rounded-lg bg-gray-100 shadow-lg">
+    <div className="max-w-md mx-auto p-4 rounded-lg bg-[#13032C] shadow-lg">
       <div className="flex items-center space-x-4">
-        <button onClick={handlePrevious} className="text-2xl text-gray-600">
+        <button onClick={handlePrevious} className="text-2xl text-white">
           {"<"}
         </button>
 
@@ -37,7 +37,7 @@ export default function Carousel({ movies }: CarouselProps) {
             alt={currentMovie.program.title}
             className="w-32 h-48 object-cover rounded-md"
           />
-          <h2 className="text-lg font-semibold mt-2">
+          <h2 className="text-lg font-semibold mt-2 text-white">
             {currentMovie.program.title}
           </h2>
 
@@ -60,8 +60,8 @@ export default function Carousel({ movies }: CarouselProps) {
                     {review.media.name}
                   </a>
                 </div>
-                <p className="text-sm text-gray-700 mt-1">{review.comment}</p>
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-sm text-white mt-1">{review.comment}</p>
+                <p className="text-sm text-white mt-1">
                   Rating: {review.rating.score}/{review.rating.max} (
                   {review.normalized_rating.toFixed(1)})
                 </p>
@@ -70,7 +70,7 @@ export default function Carousel({ movies }: CarouselProps) {
           </div>
         </div>
 
-        <button onClick={handleNext} className="text-2xl text-gray-600">
+        <button onClick={handleNext} className="text-2xl text-white">
           {">"}
         </button>
       </div>
