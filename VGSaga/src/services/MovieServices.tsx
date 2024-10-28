@@ -1,19 +1,24 @@
 import axios from "axios";
-import { IMovie } from "../interface/IMovie"; // Adjust path if necessary
+import { IMovie } from "../interface/IMovie";
+import { IReview } from "../interface/IReview";
 
 const movieApiEndpoint = "http://localhost:5277/proxy/reviews";
 
-const getAllMovies = async (): Promise<IMovie[]> => {
+const getAllMoviesAndReviews = async (): Promise<{
+  movies: IMovie[];
+  reviews: IReview[];
+}> => {
   try {
-    const result = await axios.get<{ data: IMovie[] }>(movieApiEndpoint);
-    console.log(result.data.data); // Log the array of movies directly
-    return result.data.data; // Directly return the array of movies
+    const result = await axios.get<{
+      data: { movies: IMovie[]; reviews: IReview[] };
+    }>(movieApiEndpoint);
+    return result.data.data; // Return data as { movies, reviews }
   } catch (error) {
-    console.log("Error fetching movies", error);
+    console.log("Error fetching data", error);
     throw error;
   }
 };
 
 export default {
-  getAllMovies,
+  getAllMoviesAndReviews,
 };
