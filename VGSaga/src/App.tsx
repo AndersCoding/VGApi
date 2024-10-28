@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { IMovie } from "./interface/IMovie";
 import MovieServices from "./services/MovieServices";
 import "./App.css";
+import Carousel from "./Components/Carousel";
 
 function App() {
   const [movies, setMovies] = useState<IMovie[]>([]);
@@ -10,7 +11,7 @@ function App() {
     const fetchMovies = async () => {
       try {
         const fetchedMovies = await MovieServices.getAllMovies();
-        setMovies(fetchedMovies); // Set movies directly
+        setMovies(fetchedMovies);
       } catch (error) {
         console.error("Error fetching movies:", error);
       }
@@ -20,20 +21,13 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h1>Movies</h1>
-      <div className="movies-container">
-        {movies.length > 0 ? (
-          movies.map((movie) => (
-            <div key={movie.program.slug} className="movie-item">
-              <img src={movie.program.poster} alt={movie.program.title} />
-              <h2>{movie.program.title}</h2>
-            </div>
-          ))
-        ) : (
-          <p>No movies found.</p>
-        )}
-      </div>
+    <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold text-center mb-6">Movies Carousel</h1>
+      {movies.length > 0 ? (
+        <Carousel movies={movies} />
+      ) : (
+        <p className="text-center text-gray-500">No movies found.</p>
+      )}
     </div>
   );
 }
