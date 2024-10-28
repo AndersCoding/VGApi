@@ -1,13 +1,12 @@
+// src/Components/Carousel.tsx
 import { useState } from "react";
 import { IMovie } from "../interface/IMovie";
-import SAGA from "../images/SAGA.png";
 
 interface CarouselProps {
   movies: IMovie[];
-  reviews: IReview[]; // Pass reviews as a prop
 }
 
-export default function Carousel({ movies, reviews }: CarouselProps) {
+export default function Carousel({ movies }: CarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrevious = () => {
@@ -22,61 +21,58 @@ export default function Carousel({ movies, reviews }: CarouselProps) {
     );
   };
 
-  const prevIndex = (currentIndex === 0 ? movies.length : currentIndex) - 1;
-  const nextIndex = (currentIndex + 1) % movies.length;
+  const currentMovie = movies[currentIndex];
 
   return (
-    <div className="max-w-sm mx-auto p-4 rounded-[30px] border-[3px] border-[#31214A] bg-[#13032C] ">
-      {" "}
+    <div className="max-w-md mx-auto p-4 rounded-lg bg-gray-100 shadow-lg">
       <div className="flex items-center space-x-4">
-        <button
-          onClick={handlePrevious}
-          className="text-3xl text-gray-600 hover:text-gray-800 focus:outline-none"
-        >
+        <button onClick={handlePrevious} className="text-2xl text-gray-600">
           {"<"}
         </button>
 
-        <div className="flex items-center justify-center space-x-4">
-          {/* Current Movie */}
+        {/* Movie Display */}
+        <div className="flex flex-col items-center">
+          <img
+            src={currentMovie.program.poster}
+            alt={currentMovie.program.title}
+            className="w-32 h-48 object-cover rounded-md"
+          />
+          <h2 className="text-lg font-semibold mt-2">
+            {currentMovie.program.title}
+          </h2>
 
-          <div className="relative flex flex-col items-center transform scale-100 transition-transform duration-300 ease-in-out">
-            <img
-              src={SAGA}
-              className="max-w-full h-auto top-0 left-0 object-contain"
-            ></img>{" "}
-            <img
-              src={movies[currentIndex].program.poster}
-              alt={movies[currentIndex].program.title}
-              className="w-32 h-40 rounded-md shadow-lg border-2 border-blue-400"
-            />
-          </div>
-
-          {/* Next Movie */}
-          <div className="transform scale-75 opacity-50 transition-transform duration-300 ease-in-out">
-            <img
-              src={movies[nextIndex].program.poster}
-              alt={movies[nextIndex].program.title}
-              className="w-20 h-28 rounded-md shadow-md"
-            />
+          {/* Reviews for the current movie */}
+          <div className="mt-4 space-y-4">
+            {currentMovie.reviews.map((review, index) => (
+              <div key={index} className="p-2 border-b border-gray-200">
+                <div className="flex items-center space-x-2">
+                  <img
+                    src={review.media.logo}
+                    alt={review.media.name}
+                    className="w-6 h-6"
+                  />
+                  <a
+                    href={review.media.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-semibold text-blue-500"
+                  >
+                    {review.media.name}
+                  </a>
+                </div>
+                <p className="text-sm text-gray-700 mt-1">{review.comment}</p>
+                <p className="text-sm text-gray-500 mt-1">
+                  Rating: {review.rating.score}/{review.rating.max} (
+                  {review.normalized_rating.toFixed(1)})
+                </p>
+              </div>
+            ))}
           </div>
         </div>
 
-        <button
-          onClick={handleNext}
-          className="text-3xl text-gray-600 hover:text-gray-800 focus:outline-none"
-        >
+        <button onClick={handleNext} className="text-2xl text-gray-600">
           {">"}
         </button>
-      </div>
-      <div className="flex items-center justify-center space-x-2 mt-4">
-        {movies.map((_, index) => (
-          <div
-            key={index}
-            className={`h-2 w-2 rounded-full ${
-              index === currentIndex ? "bg-blue-500" : "bg-gray-400"
-            }`}
-          />
-        ))}
       </div>
     </div>
   );
