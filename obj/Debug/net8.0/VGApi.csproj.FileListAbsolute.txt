@@ -36,3 +36,4 @@
 /Users/andersbellsundbeil/Desktop/VGApi/bin/Debug/net8.0/VGSaga/tsconfig.app.json
 /Users/andersbellsundbeil/Desktop/VGApi/bin/Debug/net8.0/VGSaga/tsconfig.json
 /Users/andersbellsundbeil/Desktop/VGApi/bin/Debug/net8.0/VGSaga/tsconfig.node.json
+/Users/andersbellsundbeil/Desktop/VGApi/obj/Debug/net8.0/VGApi.sourcelink.json

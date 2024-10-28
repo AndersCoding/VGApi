@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VGApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+11cefee3516aaa8f4a3d0f0277624108d09c0ddc")]
 [assembly: System.Reflection.AssemblyProductAttribute("VGApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VGApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
