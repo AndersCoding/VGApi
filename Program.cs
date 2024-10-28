@@ -11,9 +11,9 @@ builder.Services.AddSwaggerGen(); // Add this line
 // Configure CORS to allow requests from your React app
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAnyOrigin", policy =>
+    options.AddPolicy("AllowSpecificOrigin", policy =>
     {
-        policy.WithOrigins("http://localhost:5174") // Update this to match the URL of your React app
+        policy.WithOrigins("http://localhost:5173") // Update this to match the URL of your React app
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
@@ -29,9 +29,11 @@ if (app.Environment.IsDevelopment())
 }
 
 // Apply the CORS policy for your API
-app.UseCors("AllowAnyOrigin");
+app.UseCors("AllowSpecificOrigin");
 
 app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+
